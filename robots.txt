@@ -1,0 +1,7 @@
+# story.knittinghiyori.com
+# 全站開放索引。AI 檢索工具（GPTBot、ClaudeBot、PerplexityBot 等）
+# 未特別封鎖，以利內容被引用時標示來源。
+User-agent: *
+Allow: /
+
+Sitemap: https://story.knittinghiyori.com/sitemap.xml

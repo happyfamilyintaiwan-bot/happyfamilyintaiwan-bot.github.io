@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<!-- ══════════════════════════════════════════════════════════════
+     SEO / GEO 基本標籤
+     ※ 要改的地方都標了 TODO
+     ══════════════════════════════════════════════════════════════ -->
+<title>編織日和 · 故事｜華語劇集與原著小說的深度分析</title>
+<meta name="description" content="逐部拆解華語劇集與原著小說：原著改編對照、伏筆與回收、意象與符號解讀。收錄《告白》《偷偷藏不住》《難哄》《折月亮》《點燃我，溫暖你》《逐玉》《天才女友》等作品分析。">
+<link rel="canonical" href="https://story.knittinghiyori.com/">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="author" content="編織日和">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="編織日和 · 故事">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:title" content="編織日和 · 故事｜華語劇集與原著小說的深度分析">
+<meta property="og:description" content="原著改編對照、伏筆與回收、意象與符號解讀。把一部作品讀到最裡面那一層。">
+<meta property="og:url" content="https://story.knittinghiyori.com/">
+<!-- TODO: 做一張 1200×630 的分享圖放到 repo 根目錄，命名 og-cover.jpg -->
+<meta property="og:image" content="https://story.knittinghiyori.com/og-cover.jpg">
+<meta property="og:image:alt" content="編織日和・故事：暖米色紙面上，一排拍立得照片排開，每張寫著一部作品名">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://knittinghiyori.com">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════════════════════════════
+   1. 設計代幣（要改配色改這裡就好）
+   ══════════════════════════════════════════════════════════════ */
+:root{
+  /* 紙：暖米色，像放久了的相紙 */
+  --paper:   #f2ede4;
+  --paper-2: #fbf9f5;
+  --paper-3: #e8e1d5;
+
+  /* 墨：帶暖調的深褐灰，不用純黑 */
+  --ink:     #3e3a34;
+  --ink-2:   #6f6a61;
+  --ink-3:   #8f8a80;
+
+  /* 織線／相片色：莫蘭迪灰調 */
+  --m-rose:  #c9a49c;  /* 灰粉 */
+  --m-clay:  #be9a8c;  /* 陶灰 */
+  --m-wheat: #cdb78a;  /* 麥黃 */
+  --m-sage:  #a7b29b;  /* 灰綠 */
+  --m-mist:  #9cadb8;  /* 霧藍 */
+  --m-lilac: #b0a6b4;  /* 藕紫 */
+  --m-jade:  #96aea4;  /* 青灰 */
+
+  --rule:        rgba(62,58,52,.14);
+  --rule-strong: rgba(62,58,52,.27);
+  --shadow:      0 10px 30px rgba(62,58,52,.09);
+  --shadow-pola: 0 12px 28px rgba(62,58,52,.13);
+
+  --serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  --sans:  "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+  --latin: "Jost", "Noto Sans TC", sans-serif;
+
+  --pad: clamp(20px, 5vw, 72px);
+  --max: 1120px;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   2. 基礎
+   ── 底色疊一層極淡的布紋（靜態，不吃效能）
+   ══════════════════════════════════════════════════════════════ */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--ink);
+  background-color:var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg,  rgba(62,58,52,.030) 0 1px, transparent 1px 8px),
+    repeating-linear-gradient(90deg, rgba(62,58,52,.030) 0 1px, transparent 1px 8px);
+  font-family:var(--sans);
+  font-weight:400;
+  font-size:16.5px;
+  line-height:2.05;
+  letter-spacing:.035em;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ink); outline-offset:3px; border-radius:2px}
+
+.wrap{max-width:var(--max); margin:0 auto; padding-inline:var(--pad)}
+
+.selvedge{
+  display:inline-flex; align-items:center; gap:.6em;
+  font-family:var(--latin); font-size:12px; font-weight:400;
+  letter-spacing:.26em; text-transform:uppercase;
+  color:var(--ink-3);
+  margin:0 0 18px;
+}
+.selvedge::before{content:""; width:26px; height:1px; background:var(--thread,var(--m-rose))}
+.selvedge b{font-weight:400; color:var(--ink-2); letter-spacing:.1em; font-family:var(--sans)}
+
+h1,h2,h3{font-family:var(--serif); font-weight:500; line-height:1.5; letter-spacing:.04em; margin:0}
+
+section{padding-block:clamp(64px,11vw,132px)}
+.rule-top{border-top:1px solid var(--rule)}
+
+/* ══════════════════════════════════════════════════════════════
+   3. 首屏
+   ══════════════════════════════════════════════════════════════ */
+.hero{
+  padding-block:clamp(52px,9vw,92px) clamp(48px,8vw,80px);
+  background:linear-gradient(180deg, var(--paper-3) 0%, rgba(232,225,213,0) 72%);
+}
+.brand{
+  font-family:var(--latin); font-size:12px; font-weight:400; letter-spacing:.34em;
+  color:var(--ink-2); margin:0 0 26px;
+}
+.hero h1{
+  font-size:clamp(33px,8.2vw,66px);
+  font-weight:500; line-height:1.5; letter-spacing:.05em;
+  margin:0 0 26px; max-width:15em;
+}
+.hero h1 em{font-style:normal; position:relative; white-space:nowrap}
+.hero h1 em::after{
+  content:""; position:absolute; left:0; right:0; bottom:-.04em; height:2px;
+  background:var(--m-rose); border-radius:2px;
+  transform:scaleX(0); transform-origin:left center;
+  animation:draw-line 1s cubic-bezier(.22,.7,.3,1) .5s forwards;
+}
+@keyframes draw-line{to{transform:scaleX(1)}}
+
+.hero p.lede{
+  font-size:clamp(15px,3.4vw,17.5px); font-weight:300; line-height:2.15;
+  color:var(--ink-2); max-width:27em; margin:0 0 40px;
+}
+.cta-row{display:flex; flex-wrap:wrap; gap:12px}
+.btn{
+  display:inline-flex; align-items:center; gap:.5em;
+  min-height:50px; padding:0 28px; border-radius:999px;
+  font-size:15px; font-weight:400; letter-spacing:.08em; text-decoration:none;
+  border:1px solid var(--rule-strong);
+  transition:transform .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn--solid{background:var(--ink); color:var(--paper-2); border-color:var(--ink)}
+.btn--solid:hover{box-shadow:var(--shadow)}
+.btn--ghost{border-color:var(--rule); background:transparent}
+.btn--ghost:hover{border-color:var(--ink-3); background:var(--paper-2)}
+
+/* ══════════════════════════════════════════════════════════════
+   4. 拍立得跑馬燈
+   ── 載入時每張由顯影層慢慢褪出，之後整排緩緩橫移
+   ══════════════════════════════════════════════════════════════ */
+.reel{
+  margin-top:clamp(40px,6vw,62px);
+  overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+          mask-image:linear-gradient(90deg,transparent 0,#000 7%,#000 93%,transparent 100%);
+}
+.reel-track{
+  display:flex; width:max-content; padding-block:26px;
+  animation:reel 68s linear infinite;
+}
+@keyframes reel{from{transform:translateX(0)} to{transform:translateX(-50%)}}
+.reel:hover .reel-track,
+.reel:focus-within .reel-track{animation-play-state:paused}
+
+.pola{
+  flex:0 0 auto; width:196px; margin-right:24px;
+  padding:13px 13px 0;
+  background:var(--paper-2);
+  border-radius:3px;
+  box-shadow:var(--shadow-pola);
+  text-decoration:none;
+  transform:rotate(var(--tilt,0deg));
+  transition:transform .3s ease, box-shadow .3s ease;
+}
+.pola:hover{transform:rotate(0deg) translateY(-6px) scale(1.03); box-shadow:0 18px 38px rgba(62,58,52,.18)}
+
+.pola-shot{
+  display:block; position:relative; aspect-ratio:1/1; overflow:hidden;
+  background-color:var(--thread);
+}
+.pola-shot img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; object-position:center 28%;   /* 偏上，讓人物的臉留在畫面裡 */
+  animation:develop-img 2.6s cubic-bezier(.4,0,.25,1) var(--d,0s) both;
+}
+@keyframes develop-img{        /* 由褪色慢慢回到正常顯色 */
+  0%{filter:saturate(.12) contrast(.82) brightness(1.14)}
+  100%{filter:none}
+}
+.pola-shot::after{             /* 相紙反光 */
+  content:""; position:absolute; inset:0; z-index:2; pointer-events:none;
+  background:linear-gradient(118deg, rgba(255,255,255,.16) 0 32%, rgba(255,255,255,0) 60%);
+}
+.dev{                          /* 顯影層 */
+  position:absolute; inset:0; z-index:3;
+  background:#cfc7b8;
+  animation:develop 2.6s cubic-bezier(.4,0,.25,1) var(--d,0s) forwards;
+}
+@keyframes develop{
+  0%{opacity:1}
+  32%{opacity:.88}
+  100%{opacity:0}
+}
+.pola-cap{
+  display:block; padding:14px 6px 16px; text-align:center;
+}
+.pola-name{
+  display:block; font-family:var(--serif); font-size:15.5px; font-weight:600;
+  letter-spacing:.08em; line-height:1.5; color:var(--ink);
+}
+.pola-by{
+  display:block; margin-top:4px;
+  font-size:11.5px; font-weight:300; letter-spacing:.06em; line-height:1.6; color:var(--ink-3);
+}
+
+/* ══════════════════════════════════════════════════════════════
+   5. 重點先看（GEO 快答區）
+   ══════════════════════════════════════════════════════════════ */
+.brief{background:var(--paper-3)}
+.brief h2{font-size:clamp(22px,5vw,30px); margin-bottom:26px}
+.brief ul{list-style:none; margin:0; padding:0; display:grid; gap:1px;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  background:var(--rule); border:1px solid var(--rule)}
+.brief li{background:var(--paper-2); padding:30px 26px}
+.brief li b{
+  display:block; font-family:var(--latin); font-size:11px; letter-spacing:.26em;
+  color:var(--ink-3); margin-bottom:12px; font-weight:400;
+}
+.brief li span{font-size:15px; font-weight:300; color:var(--ink-2); line-height:2.1}
+
+/* ══════════════════════════════════════════════════════════════
+   6. 作品目錄
+   ══════════════════════════════════════════════════════════════ */
+.works h2{font-size:clamp(26px,6vw,40px); margin-bottom:12px}
+.works .sub{color:var(--ink-3); font-size:15.5px; font-weight:300; margin:0 0 28px; max-width:34em}
+
+.filters{
+  position:sticky; top:0; z-index:20;
+  margin:0 calc(var(--pad)*-1) 30px; padding:12px var(--pad);
+  background:rgba(242,237,228,.92);
+  -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+  border-block:1px solid var(--rule);
+  display:flex; gap:8px; overflow-x:auto; scrollbar-width:none;
+  -webkit-overflow-scrolling:touch;
+}
+.filters::-webkit-scrollbar{display:none}
+.chip{
+  flex:0 0 auto; min-height:42px; padding:0 18px; border-radius:999px;
+  background:var(--paper-2); color:var(--ink-2);
+  border:1px solid var(--rule);
+  font:inherit; font-size:14.5px; letter-spacing:.06em; cursor:pointer; white-space:nowrap;
+  transition:background-color .15s, color .15s, border-color .15s;
+}
+.chip[aria-pressed="true"]{background:var(--ink); color:var(--paper-2); border-color:var(--ink)}
+.chip:hover:not([aria-pressed="true"]){border-color:var(--ink-3)}
+
+.grid{
+  list-style:none; margin:0; padding:0;
+  display:grid; gap:18px;
+  grid-template-columns:repeat(auto-fill,minmax(288px,1fr));
+}
+.work{
+  --thread:var(--m-mist);
+  opacity:0; transform:translateY(18px);
+  transition:opacity .6s ease, transform .6s ease;
+  scroll-margin-top:84px;
+}
+.work.in{opacity:1; transform:none}
+.work[hidden]{display:none}
+
+.card{
+  display:flex; flex-direction:column; height:100%;
+  padding:30px 28px 26px 30px;
+  text-decoration:none;
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  border-left:3px solid var(--thread);
+  position:relative;
+  transition:transform .24s ease, box-shadow .24s ease, border-left-width .24s ease;
+}
+a.card:hover{transform:translateY(-4px); box-shadow:var(--shadow); border-left-width:8px}
+.card--soon{background:transparent; border-style:dashed; border-left-style:solid; opacity:.82}
+
+.badge{
+  align-self:flex-start; display:inline-flex; align-items:center; gap:.55em;
+  font-size:11.5px; letter-spacing:.16em; font-weight:400;
+  color:var(--ink-2); border:1px solid var(--rule); border-radius:999px;
+  padding:4px 13px; margin-bottom:18px;
+}
+.badge::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--thread); flex:0 0 auto}
+.card h3{font-size:23px; font-weight:600; letter-spacing:.06em; margin:0 0 10px}
+.card .meta{font-size:13px; letter-spacing:.06em; font-weight:300; color:var(--ink-2); margin:0 0 18px}
+.card .note{font-size:14.5px; font-weight:300; line-height:2.05; color:var(--ink-2); margin:0 0 22px; flex:1}
+.tags{list-style:none; display:flex; flex-wrap:wrap; gap:6px; margin:0 0 18px; padding:0}
+.tags li{
+  font-size:12.5px; font-weight:300; color:var(--ink-2);
+  background:var(--paper-3); border-radius:999px; padding:3px 12px;
+}
+.go{font-size:14.5px; color:var(--ink); font-weight:400; letter-spacing:.08em}
+.go::after{content:" →"; transition:margin-left .2s ease; display:inline-block}
+a.card:hover .go::after{margin-left:5px}
+.card--soon .go{color:var(--ink-3)}
+.card--soon .go::after{content:""}
+
+.empty{display:none; padding:48px 4px; color:var(--ink-2); font-weight:300; font-size:15px}
+.empty.show{display:block}
+
+/* ══════════════════════════════════════════════════════════════
+   7. 分析方法
+   ══════════════════════════════════════════════════════════════ */
+.method{background:var(--paper-3)}
+.method h2{font-size:clamp(24px,5.5vw,36px); margin-bottom:14px}
+.method .sub{color:var(--ink-3); font-size:15.5px; font-weight:300; margin:0 0 36px; max-width:36em}
+.method-grid{list-style:none; margin:0; padding:0; display:grid; gap:28px;
+  grid-template-columns:repeat(auto-fit,minmax(268px,1fr))}
+.method-grid li{border-top:2px solid var(--thread); padding-top:24px}
+.method-grid h3{font-size:19px; font-weight:600; letter-spacing:.06em; margin:0 0 14px}
+.method-grid p{margin:0; font-size:14.5px; font-weight:300; color:var(--ink-2); line-height:2.1}
+
+/* ══════════════════════════════════════════════════════════════
+   8. 常見問題
+   ══════════════════════════════════════════════════════════════ */
+.faq h2{font-size:clamp(24px,5.5vw,36px); margin-bottom:28px}
+details{border-bottom:1px solid var(--rule)}
+details summary{
+  cursor:pointer; list-style:none; padding:24px 36px 24px 0; position:relative;
+  font-family:var(--serif); font-size:17px; font-weight:500; letter-spacing:.05em;
+}
+details summary::-webkit-details-marker{display:none}
+details summary::after{
+  content:"+"; position:absolute; right:2px; top:50%; transform:translateY(-50%);
+  font-family:var(--latin); font-weight:300; font-size:22px; color:var(--ink-3);
+  transition:transform .25s ease;
+}
+details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+details .answer{padding:0 0 26px; margin:0; color:var(--ink-2); font-weight:300; font-size:15px; max-width:44em}
+
+/* ══════════════════════════════════════════════════════════════
+   9. 電子報
+   ══════════════════════════════════════════════════════════════ */
+.letter{background:var(--paper-3); border-top:1px solid var(--rule)}
+.letter .inner{
+  display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between; gap:36px;
+}
+.letter h2{font-size:clamp(24px,5.5vw,34px); margin-bottom:16px; max-width:14em}
+.letter p{margin:0; max-width:30em; font-size:15px; font-weight:300; color:var(--ink-2); line-height:2.1}
+.letter .side{flex:0 0 auto}
+.letter .fine{
+  margin-top:14px; font-family:var(--latin); font-size:11.5px; letter-spacing:.14em;
+  color:var(--ink-3); text-align:center;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   10. 頁尾
+   ══════════════════════════════════════════════════════════════ */
+footer{border-top:1px solid var(--rule); padding-block:52px 64px; font-size:14.5px}
+footer .cols{display:flex; flex-wrap:wrap; gap:32px 56px; justify-content:space-between}
+footer .mark{font-family:var(--serif); font-size:19px; font-weight:500; letter-spacing:.08em; margin:0 0 10px}
+footer p{margin:0; color:var(--ink-2); font-weight:300; line-height:2.1}
+footer nav{display:flex; flex-direction:column; gap:8px}
+footer nav a{color:var(--ink-2); text-decoration:none}
+footer nav a:hover{color:var(--ink); text-decoration:underline; text-underline-offset:4px}
+footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var(--latin); font-weight:300; font-size:11px; letter-spacing:.2em}
+
+#top-btn{
+  position:fixed; right:16px; bottom:16px; z-index:30;
+  width:46px; height:46px; border-radius:50%;
+  background:var(--ink); color:var(--paper-2); border:0; cursor:pointer;
+  box-shadow:var(--shadow);
+  font-size:18px; line-height:1;
+  opacity:0; pointer-events:none; transform:translateY(10px);
+  transition:opacity .25s, transform .25s;
+}
+#top-btn.show{opacity:1; pointer-events:auto; transform:none}
+
+/* ══════════════════════════════════════════════════════════════
+   11. 無障礙 / 減少動態 / 手機
+   ══════════════════════════════════════════════════════════════ */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:.01ms!important; animation-delay:0s!important;
+    transition-duration:.01ms!important; transition-delay:0s!important;
+  }
+  .work{opacity:1; transform:none}
+  .reel-track{animation:none!important}
+  .reel{overflow-x:auto; -webkit-overflow-scrolling:touch}
+}
+@media (max-width:520px){
+  body{font-size:16px}
+  .grid{grid-template-columns:1fr}
+  .card{padding:26px 22px 22px 24px}
+  .pola{width:164px; margin-right:18px; padding:11px 11px 0}
+  .pola-name{font-size:14px}
+  .pola-by{font-size:11px}
+  .letter .inner{gap:26px}
+  .letter .side{width:100%}
+  .letter .btn{width:100%; justify-content:center}
+}
+</style>
+</head>
+
+<body>
+
+<!-- ══════════════════════════════════════════════════════════════
+     首屏 ＋ 拍立得跑馬燈
+     ── 拍立得需要「兩份完全一樣」的清單，跑馬燈才接得回去
+     ── 新增作品時，兩份都要各加一張
+     ══════════════════════════════════════════════════════════════ -->
+<header class="hero">
+  <div class="wrap">
+    <p class="brand">KNITTING HIYORI ・ STORY</p>
+    <h1>把一部作品，<br>讀到<em>最裡面那一層</em></h1>
+    <p class="lede">華語劇集與原著小說的深度分析。不整理金句，做原著與改編的逐段對照、伏筆與回收的配對、以及那些藏在鏡頭和標點裡的意象。</p>
+    <div class="cta-row">
+      <a class="btn btn--solid" href="#works">看作品目錄</a>
+      <a class="btn btn--ghost" href="#method">怎麼分析的</a>
+    </div>
+  </div>
+
+  <div class="reel" aria-label="作品相片牆">
+    <div class="reel-track">
+
+      <!-- ── 第一份 ─────────────────────────────────────────── -->
+      <a class="pola" href="#w-confession" style="--thread:var(--m-rose); --tilt:-2.2deg; --d:0.15s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/confession.webp" alt="《告白》劇照" loading="eager" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">告白</b><span class="pola-by">原著：應橙</span></span>
+      </a>
+      <a class="pola" href="#w-lighter" style="--thread:var(--m-clay); --tilt:1.6deg; --d:0.28s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/618541047_17925933495198007_1598610573140396370_n.webp" alt="《點燃我，溫暖你》劇照" loading="eager" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">點燃我，溫暖你</b><span class="pola-by">原著：Twentine</span></span>
+      </a>
+      <a class="pola" href="#w-zhuyu" style="--thread:var(--m-sage); --tilt:-1.4deg; --d:0.41s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/03/a_100598681_m_601_m8_480_270-1.jpg" alt="《逐玉》劇照" loading="eager" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">逐玉</b><span class="pola-by">古裝・名場面</span></span>
+      </a>
+      <a class="pola" href="#w-zheyao" style="--thread:var(--m-lilac); --tilt:2.4deg; --d:0.54s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-7-2026-04_39_10-PM.jpg" alt="《折腰》劇照" loading="eager" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">折腰</b><span class="pola-by">白首曲〈故城雪〉</span></span>
+      </a>
+      <a class="pola" href="#w-genius" style="--thread:var(--m-wheat); --tilt:-1.8deg; --d:0.67s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/ChatGPT-Image-Aug-2-2026-11_40_26-PM.webp" alt="《天才女友》劇照" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">天才女友</b><span class="pola-by">田曦薇 × 胡一天</span></span>
+      </a>
+      <a class="pola" href="#w-summer" style="--thread:var(--m-rose); --tilt:1.2deg; --d:0.80s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-21-2026-11_23_03-PM.jpg" alt="《熾夏》劇照" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">熾夏</b><span class="pola-by">Never Ending Summer</span></span>
+      </a>
+      <a class="pola" href="#w-hidden-love" style="--thread:var(--m-jade); --tilt:-2.6deg; --d:0.93s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/hidden-love.jpg" alt="《偷偷藏不住》劇照" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">偷偷藏不住</b><span class="pola-by">原著：竹已</span></span>
+      </a>
+      <a class="pola" href="#w-nanhong" style="--thread:var(--m-lilac); --tilt:1.9deg; --d:1.06s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/The-First-Frost.webp" alt="《難哄》劇照" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">難哄</b><span class="pola-by">原著：竹已</span></span>
+      </a>
+      <a class="pola" href="#w-zheyueliang" style="--thread:var(--m-mist); --tilt:-1.5deg; --d:1.19s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/when-i-meet-the-moon.jpg" alt="《折月亮》劇照" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">折月亮</b><span class="pola-by">整理中</span></span>
+      </a>
+
+      <!-- ── 第二份（複製品，對讀者與爬蟲隱藏） ──────────────── -->
+      <a class="pola" href="#w-confession" aria-hidden="true" tabindex="-1" style="--thread:var(--m-rose); --tilt:-2.2deg; --d:0.15s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/confession.webp" alt="" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">告白</b><span class="pola-by">原著：應橙</span></span>
+      </a>
+      <a class="pola" href="#w-lighter" aria-hidden="true" tabindex="-1" style="--thread:var(--m-clay); --tilt:1.6deg; --d:0.28s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/618541047_17925933495198007_1598610573140396370_n.webp" alt="" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">點燃我，溫暖你</b><span class="pola-by">原著：Twentine</span></span>
+      </a>
+      <a class="pola" href="#w-zhuyu" aria-hidden="true" tabindex="-1" style="--thread:var(--m-sage); --tilt:-1.4deg; --d:0.41s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/03/a_100598681_m_601_m8_480_270-1.jpg" alt="" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">逐玉</b><span class="pola-by">古裝・名場面</span></span>
+      </a>
+      <a class="pola" href="#w-zheyao" aria-hidden="true" tabindex="-1" style="--thread:var(--m-lilac); --tilt:2.4deg; --d:0.54s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-7-2026-04_39_10-PM.jpg" alt="" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">折腰</b><span class="pola-by">白首曲〈故城雪〉</span></span>
+      </a>
+      <a class="pola" href="#w-genius" aria-hidden="true" tabindex="-1" style="--thread:var(--m-wheat); --tilt:-1.8deg; --d:0.67s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/ChatGPT-Image-Aug-2-2026-11_40_26-PM.webp" alt="" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">天才女友</b><span class="pola-by">田曦薇 × 胡一天</span></span>
+      </a>
+      <a class="pola" href="#w-summer" aria-hidden="true" tabindex="-1" style="--thread:var(--m-rose); --tilt:1.2deg; --d:0.80s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/06/ChatGPT-Image-Jun-21-2026-11_23_03-PM.jpg" alt="" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">熾夏</b><span class="pola-by">Never Ending Summer</span></span>
+      </a>
+      <a class="pola" href="#w-hidden-love" aria-hidden="true" tabindex="-1" style="--thread:var(--m-jade); --tilt:-2.6deg; --d:0.93s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/hidden-love.jpg" alt="" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">偷偷藏不住</b><span class="pola-by">原著：竹已</span></span>
+      </a>
+      <a class="pola" href="#w-nanhong" aria-hidden="true" tabindex="-1" style="--thread:var(--m-lilac); --tilt:1.9deg; --d:1.06s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/The-First-Frost.webp" alt="" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">難哄</b><span class="pola-by">原著：竹已</span></span>
+      </a>
+      <a class="pola" href="#w-zheyueliang" aria-hidden="true" tabindex="-1" style="--thread:var(--m-mist); --tilt:-1.5deg; --d:1.19s">
+        <span class="pola-shot">
+          <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/when-i-meet-the-moon.jpg" alt="" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">折月亮</b><span class="pola-by">整理中</span></span>
+      </a>
+
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ══════════════════════════════════════════════════════════════
+     重點先看：給讀者也給 AI 引擎的快答區
+     ══════════════════════════════════════════════════════════════ -->
+<section class="brief">
+  <div class="wrap">
+    <p class="selvedge" style="--thread:var(--m-wheat)">SUMMARY <b>重點先看</b></p>
+    <h2>這個網站在做什麼</h2>
+    <ul>
+      <li><b>WHAT</b><span>編織日和・故事是華語劇集與原著小說的長文分析站，用繁體中文寫作。</span></li>
+      <li><b>HOW</b><span>每部作品固定看三件事：原著與改編差在哪、伏筆埋在哪又在哪回收、反覆出現的意象在說什麼。</span></li>
+      <li><b>WHO</b><span>寫給看完之後還想再想一想的人，以及想在動筆前先確認角度的創作者。</span></li>
+      <li><b>WHERE</b><span>互動長文放在本站，其餘文章與生活紀錄在母站 knittinghiyori.com。</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     作品目錄
+     ── 新增一部作品，複製最下方的「範本卡片」貼進 .grid 就好
+     ── data-type 可填：drama（劇集）／novel（小說）／comic（漫畫）／film（電影）
+     ── data-state 可填：ready（可閱讀）／soon（整理中）
+     ══════════════════════════════════════════════════════════════ -->
+<section class="works" id="works">
+  <div class="wrap">
+    <p class="selvedge" style="--thread:var(--m-rose)">WORKS <b>作品目錄</b></p>
+    <h2>已織好的，與正在織的</h2>
+    <p class="sub">每部作品都有一篇主頁，內容太長的部分會再拆成分頁，從主頁往下連。</p>
+
+    <div class="filters" role="group" aria-label="依類型篩選作品">
+      <button class="chip" data-filter="all"   aria-pressed="true">全部</button>
+      <button class="chip" data-filter="drama" aria-pressed="false">劇集</button>
+      <button class="chip" data-filter="novel" aria-pressed="false">小說</button>
+      <button class="chip" data-filter="comic" aria-pressed="false">漫畫</button>
+      <button class="chip" data-filter="film"  aria-pressed="false">電影</button>
+      <button class="chip" data-filter="ready" aria-pressed="false">只看可閱讀</button>
+    </div>
+
+    <ul class="grid" id="grid">
+
+      <!-- ① 告白 -->
+      <li class="work" id="w-confession" data-type="drama" data-state="ready" style="--thread:var(--m-rose)">
+        <a class="card" href="https://story.knittinghiyori.com/confession/">
+          <span class="badge">互動長文</span>
+          <h3>告白</h3>
+          <p class="meta">原著：應橙</p>
+          <p class="note">從破折號與「一一」這兩個排版符號讀起——應橙把最重的話都藏在標點的停頓裡，十個場景逐一拆開看。</p>
+          <ul class="tags"><li>意象解讀</li><li>經典台詞</li><li>捲動式互動頁</li></ul>
+          <span class="go">閱讀分析</span>
+        </a>
+      </li>
+
+      <!-- ② 點燃我，溫暖你 -->
+      <li class="work" id="w-lighter" data-type="drama" data-state="ready" style="--thread:var(--m-clay)">
+        <a class="card" href="https://knittinghiyori.com/lighter-and-princess/">
+          <span class="badge">部落格長文</span>
+          <h3>點燃我，溫暖你</h3>
+          <p class="meta">原著：Twentine《打火機與公主裙》</p>
+          <p class="note">「公主殿下親啟」——同一個稱呼從嘲諷變成只屬於兩個人的暱稱，這個轉向就是整部戲的情感軸線。</p>
+          <ul class="tags"><li>原著改編對照</li><li>伏筆回收</li><li>常見問題</li></ul>
+          <span class="go">閱讀分析</span>
+        </a>
+      </li>
+
+      <!-- ③ 逐玉 -->
+      <li class="work" id="w-zhuyu" data-type="drama" data-state="ready" style="--thread:var(--m-sage)">
+        <a class="card" href="https://knittinghiyori.com/pursuit-of-jade/">
+          <span class="badge">部落格長文</span>
+          <h3>逐玉</h3>
+          <p class="meta">古裝｜名場面盤點</p>
+          <p class="note">十個不能錯過的心動片段。看古風劇怎麼用一個眼神、半句沒說完的話，把告白說得比直說更重。</p>
+          <ul class="tags"><li>名場面</li><li>意象解讀</li><li>古裝</li></ul>
+          <span class="go">閱讀分析</span>
+        </a>
+      </li>
+
+      <!-- ④ 折腰 -->
+      <li class="work" id="w-zheyao" data-type="drama" data-state="ready" style="--thread:var(--m-lilac)">
+        <a class="card" href="https://knittinghiyori.com/the-prisoner-of-beauty-a-lifelong-bond-of-love-and-loyalty/">
+          <span class="badge">部落格長文</span>
+          <h3>折腰</h3>
+          <p class="meta">主題曲：〈故城雪〉</p>
+          <p class="note">從白首曲〈故城雪〉的歌詞讀進去，看中文怎麼把「一生一世」講得那麼輕，又那麼重。</p>
+          <ul class="tags"><li>歌詞解讀</li><li>意象解讀</li><li>逐玉延伸</li></ul>
+          <span class="go">閱讀分析</span>
+        </a>
+      </li>
+
+      <!-- ⑤ 天才女友 -->
+      <li class="work" id="w-genius" data-type="drama" data-state="ready" style="--thread:var(--m-wheat)">
+        <a class="card" href="https://knittinghiyori.com/genius-girlfriend-2026-premiere-guide/">
+          <span class="badge">部落格長文</span>
+          <h3>天才女友</h3>
+          <p class="meta">田曦薇 × 胡一天</p>
+          <p class="note">8/2 開播的完整準備：追劇日曆、OST，加上原著名場面對照，開播當天就能跟上進度。</p>
+          <ul class="tags"><li>開播指南</li><li>追劇日曆</li><li>OST</li></ul>
+          <span class="go">閱讀分析</span>
+        </a>
+      </li>
+
+      <!-- ⑥ 熾夏 -->
+      <li class="work" id="w-summer" data-type="drama" data-state="ready" style="--thread:var(--m-rose)">
+        <a class="card" href="https://knittinghiyori.com/never-ending-summer-ending-be-or-he/">
+          <span class="badge">部落格長文</span>
+          <h3>熾夏</h3>
+          <p class="meta">Never Ending Summer</p>
+          <p class="note">大結局是 BE 還是 HE？完結後改寫的定論版，附追劇日曆、超點時程與名場面整理。</p>
+          <ul class="tags"><li>結局解讀</li><li>追劇日曆</li><li>名場面</li></ul>
+          <span class="go">閱讀分析</span>
+        </a>
+      </li>
+
+      <!-- ⑦ 偷偷藏不住 -->
+      <li class="work" id="w-hidden-love" data-type="drama" data-state="soon" style="--thread:var(--m-jade)">
+        <div class="card card--soon">
+          <span class="badge">整理中</span>
+          <h3>偷偷藏不住</h3>
+          <p class="meta">原著：竹已</p>
+          <p class="note">TODO：換成你自己的一句話定位。建議寫「這篇會從哪個角度切」，而不是劇情簡介。</p>
+          <ul class="tags"><li>原著改編對照</li><li>伏筆回收</li></ul>
+          <span class="go">預計上線</span>
+        </div>
+      </li>
+
+      <!-- ⑧ 難哄 -->
+      <li class="work" id="w-nanhong" data-type="drama" data-state="soon" style="--thread:var(--m-lilac)">
+        <div class="card card--soon">
+          <span class="badge">整理中</span>
+          <h3>難哄</h3>
+          <p class="meta">原著：竹已</p>
+          <p class="note">TODO：換成你自己的一句話定位。</p>
+          <ul class="tags"><li>原著改編對照</li><li>角色弧線</li></ul>
+          <span class="go">預計上線</span>
+        </div>
+      </li>
+
+      <!-- ⑨ 折月亮 -->
+      <li class="work" id="w-zheyueliang" data-type="drama" data-state="soon" style="--thread:var(--m-mist)">
+        <div class="card card--soon">
+          <span class="badge">整理中</span>
+          <h3>折月亮</h3>
+          <p class="meta">TODO：補原著／編劇資訊</p>
+          <p class="note">TODO：換成你自己的一句話定位。</p>
+          <ul class="tags"><li>意象解讀</li></ul>
+          <span class="go">預計上線</span>
+        </div>
+      </li>
+
+      <!-- ══ 範本卡片：複製下面整段來新增作品 ══════════════════
+      <li class="work" id="w-英文代號" data-type="drama" data-state="ready" style="--thread:var(--m-mist)">
+        <a class="card" href="https://story.knittinghiyori.com/作品英文網址/">
+          <span class="badge">互動長文</span>
+          <h3>作品名</h3>
+          <p class="meta">原著：作者名</p>
+          <p class="note">一句話說明這篇從哪個角度切入。</p>
+          <ul class="tags"><li>標籤一</li><li>標籤二</li></ul>
+          <span class="go">閱讀分析</span>
+        </a>
+      </li>
+      ══ 顏色可選：--m-rose / --m-clay / --m-wheat / --m-sage /
+                  --m-mist / --m-lilac / --m-jade
+      ══ 還沒寫完的作品，把 <a class="card" href="…"> 換成
+         <div class="card card--soon">，data-state 改成 soon
+      ══ 別忘了首屏拍立得也要加一張。.reel-track 裡有「兩份完全一樣」
+         的清單，跑馬燈靠這兩份無縫接回，所以兩份都要加：
+
+      <a class="pola" href="#w-英文代號" style="--thread:var(--m-mist); --tilt:1.6deg; --d:1.3s">
+        <span class="pola-shot">
+          <img src="劇照網址" alt="《作品名》劇照" loading="lazy" decoding="async">
+          <i class="dev"></i>
+        </span>
+        <span class="pola-cap"><b class="pola-name">作品名</b><span class="pola-by">原著：作者名</span></span>
+      </a>
+
+         --tilt 取 ±1～2.6deg 之間，看起來才像隨手擺的
+         --d   顯影延遲，依序往後加 0.13s
+         第二份要加上 aria-hidden="true" tabindex="-1"，alt 留空
+      ══════════════════════════════════════════════════════════ -->
+
+    </ul>
+    <p class="empty" id="empty">這個分類還沒有作品。<button class="chip" data-filter="all" style="margin-left:8px">看全部</button></p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     分析方法
+     ══════════════════════════════════════════════════════════════ -->
+<section class="method rule-top" id="method">
+  <div class="wrap">
+    <p class="selvedge" style="--thread:var(--m-sage)">METHOD <b>分析方法</b></p>
+    <h2>每部作品都問這三個問題</h2>
+    <p class="sub">追劇心得很多，能回答這三題的很少。這是這個站唯一想做好的事。</p>
+    <ul class="method-grid">
+      <li style="--thread:var(--m-rose)">
+        <h3>改編動了什麼</h3>
+        <p>原著寫的和劇裡演的逐段對照。刪掉的一句、換掉的一個場景，通常就是整部戲的分岔點——把它找出來，比說「還原度很高」有用得多。</p>
+      </li>
+      <li style="--thread:var(--m-wheat)">
+        <h3>伏筆埋在哪</h3>
+        <p>把前面那句沒人注意的台詞，和後面回收它的那一幕擺在一起看。成對呈現，不是逐集流水帳。</p>
+      </li>
+      <li style="--thread:var(--m-mist)">
+        <h3>反覆的東西在說什麼</h3>
+        <p>一再出現的顏色、物件、天氣、甚至標點。創作者重複的地方就是他在意的地方，順著讀下去往往能看到角色沒說出口的那部分。</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     常見問題（details/summary：內容留在 DOM，爬蟲讀得到）
+     ══════════════════════════════════════════════════════════════ -->
+<section class="faq rule-top">
+  <div class="wrap">
+    <p class="selvedge" style="--thread:var(--m-lilac)">FAQ <b>常見問題</b></p>
+    <h2>關於這個網站</h2>
+
+    <details>
+      <summary>編織日和・故事和母站 knittinghiyori.com 有什麼關係？</summary>
+      <p class="answer">同一個人寫的。母站放的是生活、手作與各類長文，故事站專門收作品分析，尤其是需要動畫或互動才講得清楚的那幾篇。兩邊互相連結，內容不重複。</p>
+    </details>
+
+    <details>
+      <summary>這裡的分析和一般追劇心得差在哪？</summary>
+      <p class="answer">一般心得多半是把喜歡的台詞抄下來排一排。這裡不做金句整理，而是做原著與改編的逐段對照、伏筆與回收的配對、以及反覆出現的意象解讀。目的是解釋「為什麼這一段會讓人記住」，而不是重述劇情。</p>
+    </details>
+
+    <details>
+      <summary>沒看過原著，讀了會被暴雷嗎？</summary>
+      <p class="answer">會。所有分析都預設你已經看完該作品，文章不做防雷處理。想先確認的話，建議看完再回來讀。</p>
+    </details>
+
+    <details>
+      <summary>台詞和引文可信嗎？</summary>
+      <p class="answer">網路上流傳的中文引文常常查無出處。這裡的處理方式是分層標示：能對到原文或劇集畫面的標為「已核對」，只在網路流傳、找不到來源的另外列出並註明，其餘則寫成自己的解讀，不假託作者或角色之口。</p>
+    </details>
+
+    <details>
+      <summary>可以引用這裡的內容嗎？</summary>
+      <p class="answer">可以，請註明出處並附上原文連結。整篇轉載請先來信詢問。AI 工具引用時同樣希望標示來源網址。</p>
+    </details>
+
+    <details>
+      <summary>多久更新？之後會寫哪些作品？</summary>
+      <p class="answer">沒有固定頻率，一部作品從看完到寫完通常要幾週。接下來預定《偷偷藏不住》《難哄》《折月亮》，之後也會擴到小說、漫畫與電影。</p>
+    </details>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════════
+     電子報
+     ══════════════════════════════════════════════════════════════ -->
+<section class="letter" id="newsletter">
+  <div class="wrap inner">
+    <div>
+      <p class="selvedge" style="--thread:var(--m-clay)">NEWSLETTER <b>電子報</b></p>
+      <h2>新的一篇洗好了，讓你第一個看到</h2>
+      <p>不定期寄出，一封信講一部作品：這次從哪裡切入、找到了什麼，還有哪些沒寫進文章裡的想法。隨時可以退訂。</p>
+    </div>
+    <div class="side">
+      <a class="btn btn--solid" href="https://knittinghiyori.kit.com/2cf3d82ac1" target="_blank" rel="noopener">訂閱電子報</a>
+      <p class="fine">FREE ・ 隨時退訂</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ══════════════════════════════════════════════════════════════
+     頁尾
+     ══════════════════════════════════════════════════════════════ -->
+<footer class="rule-top">
+  <div class="wrap cols">
+    <div>
+      <p class="mark">編織日和 · 故事</p>
+      <p>華語劇集與原著小說的深度分析<br>Traditional Chinese ・ Taiwan</p>
+    </div>
+    <nav aria-label="站外連結">
+      <a href="https://knittinghiyori.com/">母站 編織日和</a>
+      <a href="#works">作品目錄</a>
+      <a href="#method">分析方法</a>
+      <a href="https://knittinghiyori.kit.com/2cf3d82ac1" target="_blank" rel="noopener">訂閱電子報</a>
+      <!-- TODO: 有聯絡信箱或社群的話補在這裡 -->
+    </nav>
+  </div>
+  <div class="wrap"><small>© <span id="yr">2026</span> KNITTING HIYORI. ALL RIGHTS RESERVED.</small></div>
+</footer>
+
+<button id="top-btn" aria-label="回到頁面頂端">↑</button>
+
+<!-- ══════════════════════════════════════════════════════════════
+     結構化資料
+     ── Article 類型交給各篇文章自己處理，這裡只放首頁需要的
+     ══════════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://story.knittinghiyori.com/#website",
+      "url": "https://story.knittinghiyori.com/",
+      "name": "編織日和 · 故事",
+      "alternateName": "Knitting Hiyori Story",
+      "description": "華語劇集與原著小說的深度分析：原著改編對照、伏筆與回收、意象與符號解讀。",
+      "inLanguage": "zh-Hant-TW",
+      "publisher": { "@id": "https://knittinghiyori.com/#person" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://knittinghiyori.com/#person",
+      "name": "編織日和",
+      "url": "https://knittinghiyori.com/",
+      "knowsLanguage": ["zh-Hant", "zh-Hans"],
+      "knowsAbout": ["華語劇集", "原著改編", "小說評論", "敘事分析"]
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://story.knittinghiyori.com/#collection",
+      "url": "https://story.knittinghiyori.com/",
+      "name": "作品目錄｜編織日和 · 故事",
+      "isPartOf": { "@id": "https://story.knittinghiyori.com/#website" },
+      "inLanguage": "zh-Hant-TW",
+      "about": "華語劇集與原著小說的深度分析",
+      "mainEntity": {
+        "@type": "ItemList",
+        "name": "已收錄的作品分析",
+        "itemListOrder": "https://schema.org/ItemListUnordered",
+        "numberOfItems": 9,
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "告白", "url": "https://story.knittinghiyori.com/confession/" },
+          { "@type": "ListItem", "position": 2, "name": "點燃我，溫暖你", "url": "https://knittinghiyori.com/lighter-and-princess/" },
+          { "@type": "ListItem", "position": 3, "name": "逐玉", "url": "https://knittinghiyori.com/pursuit-of-jade/" },
+          { "@type": "ListItem", "position": 4, "name": "折腰", "url": "https://knittinghiyori.com/the-prisoner-of-beauty-a-lifelong-bond-of-love-and-loyalty/" },
+          { "@type": "ListItem", "position": 5, "name": "天才女友", "url": "https://knittinghiyori.com/genius-girlfriend-2026-premiere-guide/" },
+          { "@type": "ListItem", "position": 6, "name": "熾夏", "url": "https://knittinghiyori.com/never-ending-summer-ending-be-or-he/" },
+          { "@type": "ListItem", "position": 7, "name": "偷偷藏不住" },
+          { "@type": "ListItem", "position": 8, "name": "難哄" },
+          { "@type": "ListItem", "position": 9, "name": "折月亮" }
+        ]
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://story.knittinghiyori.com/#faq",
+      "isPartOf": { "@id": "https://story.knittinghiyori.com/#website" },
+      "inLanguage": "zh-Hant-TW",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "編織日和・故事和母站 knittinghiyori.com 有什麼關係？",
+          "acceptedAnswer": { "@type": "Answer", "text": "同一個人寫的。母站放的是生活、手作與各類長文，故事站專門收作品分析，尤其是需要動畫或互動才講得清楚的那幾篇。兩邊互相連結，內容不重複。" }
+        },
+        {
+          "@type": "Question",
+          "name": "這裡的分析和一般追劇心得差在哪？",
+          "acceptedAnswer": { "@type": "Answer", "text": "一般心得多半是把喜歡的台詞抄下來排一排。這裡不做金句整理，而是做原著與改編的逐段對照、伏筆與回收的配對、以及反覆出現的意象解讀。目的是解釋為什麼這一段會讓人記住，而不是重述劇情。" }
+        },
+        {
+          "@type": "Question",
+          "name": "沒看過原著，讀了會被暴雷嗎？",
+          "acceptedAnswer": { "@type": "Answer", "text": "會。所有分析都預設你已經看完該作品，文章不做防雷處理。想先確認的話，建議看完再回來讀。" }
+        },
+        {
+          "@type": "Question",
+          "name": "台詞和引文可信嗎？",
+          "acceptedAnswer": { "@type": "Answer", "text": "網路上流傳的中文引文常常查無出處。這裡的處理方式是分層標示：能對到原文或劇集畫面的標為已核對，只在網路流傳、找不到來源的另外列出並註明，其餘則寫成自己的解讀，不假託作者或角色之口。" }
+        },
+        {
+          "@type": "Question",
+          "name": "可以引用這裡的內容嗎？",
+          "acceptedAnswer": { "@type": "Answer", "text": "可以，請註明出處並附上原文連結。整篇轉載請先來信詢問。AI 工具引用時同樣希望標示來源網址。" }
+        },
+        {
+          "@type": "Question",
+          "name": "多久更新？之後會寫哪些作品？",
+          "acceptedAnswer": { "@type": "Answer", "text": "沒有固定頻率，一部作品從看完到寫完通常要幾週。接下來預定《偷偷藏不住》《難哄》《折月亮》，之後也會擴到小說、漫畫與電影。" }
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<script>
+/* ══════════════════════════════════════════════════════════════
+   1. 拍立得跑馬燈：捲離首屏就暫停，省電
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var reel = document.querySelector('.reel');
+  var track = document.querySelector('.reel-track');
+  if (!reel || !track || !('IntersectionObserver' in window)) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  new IntersectionObserver(function (es) {
+    track.style.animationPlayState = es[0].isIntersecting ? 'running' : 'paused';
+  }).observe(reel);
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   2. 作品卡片捲動浮現
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var items = document.querySelectorAll('.work');
+  if (!('IntersectionObserver' in window)) {
+    items.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e, i) {
+      if (!e.isIntersecting) return;
+      setTimeout(function () { e.target.classList.add('in'); }, i * 70);
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  items.forEach(function (el) { io.observe(el); });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   3. 分類篩選
+   ── 只切換 hidden，全部卡片仍留在 HTML 裡，爬蟲讀得到
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var chips = document.querySelectorAll('.chip[data-filter]');
+  var works = document.querySelectorAll('.work');
+  var empty = document.getElementById('empty');
+
+  function apply(key) {
+    var shown = 0;
+    works.forEach(function (w) {
+      var ok = key === 'all'
+        ? true
+        : key === 'ready'
+          ? w.dataset.state === 'ready'
+          : w.dataset.type === key;
+      w.hidden = !ok;
+      if (ok) { shown++; w.classList.add('in'); }
+    });
+    empty.classList.toggle('show', shown === 0);
+    document.querySelectorAll('.filters .chip').forEach(function (c) {
+      c.setAttribute('aria-pressed', String(c.dataset.filter === key));
+    });
+  }
+
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () { apply(c.dataset.filter); });
+  });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   4. 點拍立得跳到卡片：先取消篩選，免得目標被隱藏
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  document.querySelectorAll('.pola').forEach(function (p) {
+    p.addEventListener('click', function () {
+      var el = document.querySelector(p.getAttribute('href'));
+      if (el && el.hidden) {
+        document.querySelector('.chip[data-filter="all"]').click();
+      }
+    });
+  });
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   5. 回到頂端 + 年份
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  var btn = document.getElementById('top-btn');
+  var onScroll = function () {
+    btn.classList.toggle('show', window.scrollY > window.innerHeight * 0.9);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  btn.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+</script>
+
+</body>
+</html>
