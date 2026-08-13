@@ -1,0 +1,140 @@
+<!-- ══════════════════════════════════════════════════════════════
+     互動頁底部出口區塊
+     ── 貼在互動頁最底（</body> 之前）
+     ── 樣式全部收在 .exit 底下，不會影響頁面其他部分
+     ── 每個作品的互動頁都可以用，改三個 TODO 就好
+     ══════════════════════════════════════════════════════════════ -->
+<section class="exit">
+  <style>
+  .exit{
+    /* 這一段只影響本區塊；想換色改這裡 */
+    --x-paper:  #f2ede4;
+    --x-paper2: #fbf9f5;
+    --x-ink:    #3e3a34;
+    --x-ink2:   #6f6a61;
+    --x-ink3:   #8f8a80;
+    --x-accent: #c9a49c;          /* 每部作品可換成自己的主色 */
+    --x-rule:   rgba(62,58,52,.14);
+
+    box-sizing:border-box;
+    margin:0; padding:clamp(56px,10vw,104px) clamp(20px,5vw,72px) clamp(48px,8vw,80px);
+    background:var(--x-paper);
+    color:var(--x-ink);
+    font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+    font-size:16px; line-height:2.05; letter-spacing:.035em;
+  }
+  .exit *,.exit *::before,.exit *::after{box-sizing:border-box}
+  .exit .x-wrap{max-width:1120px; margin:0 auto}
+
+  .exit .x-eyebrow{
+    display:inline-flex; align-items:center; gap:.6em;
+    font-size:12px; letter-spacing:.26em; text-transform:uppercase;
+    color:var(--x-ink3); margin:0 0 18px;
+  }
+  .exit .x-eyebrow::before{content:""; width:26px; height:1px; background:var(--x-accent)}
+
+  /* ── 主出口：長文 ─────────────────────────────────── */
+  .exit .x-main{
+    display:block; text-decoration:none; color:inherit;
+    background:var(--x-paper2);
+    border:1px solid var(--x-rule);
+    border-left:3px solid var(--x-accent);
+    padding:clamp(28px,5vw,40px) clamp(24px,4vw,40px);
+    transition:transform .24s ease, box-shadow .24s ease, border-left-width .24s ease;
+  }
+  .exit .x-main:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 30px rgba(62,58,52,.09);
+    border-left-width:8px;
+  }
+  .exit .x-main h2{
+    font-family:"Noto Serif TC","Songti TC",serif;
+    font-size:clamp(21px,4.4vw,28px); font-weight:600; letter-spacing:.05em;
+    line-height:1.6; margin:0 0 12px;
+  }
+  .exit .x-main p{
+    margin:0 0 20px; max-width:40em;
+    font-size:15px; font-weight:300; color:var(--x-ink2); line-height:2.05;
+  }
+  .exit .x-go{font-size:15px; letter-spacing:.08em; color:var(--x-ink)}
+  .exit .x-go::after{content:" →"; display:inline-block; transition:margin-left .2s ease}
+  .exit .x-main:hover .x-go::after{margin-left:6px}
+
+  /* ── 次出口：電子報 ＋ 作品目錄 ───────────────────── */
+  .exit .x-row{
+    display:grid; gap:14px; margin-top:14px;
+    grid-template-columns:repeat(auto-fit,minmax(258px,1fr));
+  }
+  .exit .x-card{
+    display:flex; flex-direction:column; height:100%;
+    text-decoration:none; color:inherit;
+    background:transparent;
+    border:1px solid var(--x-rule);
+    padding:26px 24px;
+    transition:background-color .24s ease, transform .24s ease;
+  }
+  .exit .x-card:hover{background:var(--x-paper2); transform:translateY(-3px)}
+  .exit .x-card h3{
+    font-family:"Noto Serif TC","Songti TC",serif;
+    font-size:17px; font-weight:600; letter-spacing:.06em; margin:0 0 8px;
+  }
+  .exit .x-card p{
+    margin:0 0 16px; flex:1;
+    font-size:14px; font-weight:300; color:var(--x-ink2); line-height:2;
+  }
+  .exit .x-card .x-go{font-size:14px}
+
+  .exit .x-foot{
+    margin-top:clamp(36px,6vw,56px); padding-top:24px;
+    border-top:1px solid var(--x-rule);
+    display:flex; flex-wrap:wrap; gap:10px 28px; align-items:center;
+    font-size:13.5px; font-weight:300; color:var(--x-ink3);
+  }
+  .exit .x-foot a{color:var(--x-ink2); text-decoration:none}
+  .exit .x-foot a:hover{color:var(--x-ink); text-decoration:underline; text-underline-offset:4px}
+
+  .exit a:focus-visible{outline:2px solid var(--x-ink); outline-offset:3px}
+
+  @media (prefers-reduced-motion:reduce){
+    .exit *{transition-duration:.01ms!important}
+  }
+  @media (max-width:520px){
+    .exit .x-row{grid-template-columns:1fr}
+  }
+  </style>
+
+  <div class="x-wrap">
+    <p class="x-eyebrow">KEEP READING ・ 繼續讀</p>
+
+    <!-- ── 主出口：導回長文 ────────────────────────────
+         TODO ①：href 換成這部作品的長文網址
+         TODO ②：標題與說明換成該篇的實際內容 ── -->
+    <a class="x-main" href="https://knittinghiyori.com/TODO-文章網址/">
+      <h2>《告白》完整分析：破折號與「一一」，應橙把話留在哪裡</h2>
+      <p>這一頁挑的是最有畫面的幾個片段。完整版把十個場景逐一拆開，對照原著與廣播劇的處理差異，也整理了那些反覆出現的意象各自在說什麼。</p>
+      <span class="x-go">讀完整分析</span>
+    </a>
+
+    <div class="x-row">
+      <!-- ── 次出口：電子報 ── -->
+      <a class="x-card" href="https://knittinghiyori.kit.com/2cf3d82ac1" target="_blank" rel="noopener">
+        <h3>訂閱電子報</h3>
+        <p>新的一篇洗好了，讓你第一個看到。不定期寄出，一封信講一部作品，隨時可以退訂。</p>
+        <span class="x-go">前往訂閱</span>
+      </a>
+
+      <!-- ── 次出口：作品目錄 ── -->
+      <a class="x-card" href="https://story.knittinghiyori.com/">
+        <h3>看其他作品</h3>
+        <p>偷偷藏不住、難哄、點燃我溫暖你、逐玉、折腰、天才女友、熾夏——目前收了九部。</p>
+        <span class="x-go">回作品目錄</span>
+      </a>
+    </div>
+
+    <p class="x-foot">
+      <span>編織日和 · 故事</span>
+      <a href="https://knittinghiyori.com/">母站 編織日和</a>
+      <a href="https://story.knittinghiyori.com/">作品目錄</a>
+    </p>
+  </div>
+</section>

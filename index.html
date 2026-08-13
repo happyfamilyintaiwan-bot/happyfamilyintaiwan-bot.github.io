@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
 <head>
- <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQZHTYTRMQ"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ZQZHTYTRMQ');
-</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
@@ -501,7 +492,7 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
           <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/when-i-meet-the-moon-e1786182287685.webp" alt="《折月亮》劇照" loading="lazy" decoding="async">
           <i class="dev"></i>
         </span>
-        <span class="pola-cap"><b class="pola-name">折月亮</b><span class="pola-by">整理中</span></span>
+        <span class="pola-cap"><b class="pola-name">折月亮</b><span class="pola-by">互動閱讀頁</span></span>
       </a>
 
       <!-- ── 第二份（複製品，對讀者與爬蟲隱藏） ──────────────── -->
@@ -566,7 +557,7 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
           <img src="https://knittinghiyori.com/wp-content/uploads/2026/08/when-i-meet-the-moon-e1786182287685.webp" alt="" loading="lazy" decoding="async">
           <i class="dev"></i>
         </span>
-        <span class="pola-cap"><b class="pola-name">折月亮</b><span class="pola-by">整理中</span></span>
+        <span class="pola-cap"><b class="pola-name">折月亮</b><span class="pola-by">互動閱讀頁</span></span>
       </a>
 
     </div>
@@ -626,7 +617,20 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
         </a>
       </li>
 
-      <!-- ② 點燃我，溫暖你 -->
+      <!-- ② 折月亮 -->
+      <li class="work" id="w-zheyueliang" data-type="drama" data-state="ready" style="--thread:var(--m-mist)">
+        <a class="card" href="https://story.knittinghiyori.com/when-i-meet-the-moon/">
+          <span class="badge">互動長文</span>
+          <h3>折月亮</h3>
+          <!-- TODO：補原著／編劇資訊 -->
+          <p class="meta">互動閱讀頁</p>
+          <p class="note">同一輪月亮，盈的時候和缺的時候說的不是同一件事。順著月相走一遍，每一次圓缺都對著一次靠近，或一次退開。</p>
+          <ul class="tags"><li>月相對照</li><li>意象解讀</li><li>捲動式互動頁</li></ul>
+          <span class="go">閱讀分析</span>
+        </a>
+      </li>
+
+      <!-- ③ 點燃我，溫暖你 -->
       <li class="work" id="w-lighter" data-type="drama" data-state="ready" style="--thread:var(--m-clay)">
         <a class="card" href="https://knittinghiyori.com/lighter-and-princess/">
           <span class="badge">部落格長文</span>
@@ -638,7 +642,7 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
         </a>
       </li>
 
-      <!-- ③ 逐玉 -->
+      <!-- ④ 逐玉 -->
       <li class="work" id="w-zhuyu" data-type="drama" data-state="ready" style="--thread:var(--m-sage)">
         <a class="card" href="https://knittinghiyori.com/pursuit-of-jade/">
           <span class="badge">部落格長文</span>
@@ -650,7 +654,7 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
         </a>
       </li>
 
-      <!-- ④ 折腰 -->
+      <!-- ⑤ 折腰 -->
       <li class="work" id="w-zheyao" data-type="drama" data-state="ready" style="--thread:var(--m-lilac)">
         <a class="card" href="https://knittinghiyori.com/the-prisoner-of-beauty-a-lifelong-bond-of-love-and-loyalty/">
           <span class="badge">部落格長文</span>
@@ -662,7 +666,7 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
         </a>
       </li>
 
-      <!-- ⑤ 天才女友 -->
+      <!-- ⑥ 天才女友 -->
       <li class="work" id="w-genius" data-type="drama" data-state="ready" style="--thread:var(--m-wheat)">
         <a class="card" href="https://knittinghiyori.com/genius-girlfriend-2026-premiere-guide/">
           <span class="badge">部落格長文</span>
@@ -674,7 +678,7 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
         </a>
       </li>
 
-      <!-- ⑥ 熾夏 -->
+      <!-- ⑦ 熾夏 -->
       <li class="work" id="w-summer" data-type="drama" data-state="ready" style="--thread:var(--m-rose)">
         <a class="card" href="https://knittinghiyori.com/never-ending-summer-ending-be-or-he/">
           <span class="badge">部落格長文</span>
@@ -686,7 +690,10 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
         </a>
       </li>
 
-      <!-- ⑦ 偷偷藏不住 -->
+      <!-- ⑧ 偷偷藏不住 -->
+      <!-- 上線後：badge 改「互動長文」、go 改「閱讀分析」、data-state 改 ready，
+           <div class="card card--soon"> 換成
+           <a class="card" href="https://story.knittinghiyori.com/hidden-love/"> -->
       <li class="work" id="w-hidden-love" data-type="drama" data-state="soon" style="--thread:var(--m-jade)">
         <div class="card card--soon">
           <span class="badge">整理中</span>
@@ -698,7 +705,10 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
         </div>
       </li>
 
-      <!-- ⑧ 難哄 -->
+      <!-- ⑨ 難哄 -->
+      <!-- 上線後：badge 改「互動長文」、go 改「閱讀分析」、data-state 改 ready，
+           <div class="card card--soon"> 換成
+           <a class="card" href="https://story.knittinghiyori.com/the-first-frost/"> -->
       <li class="work" id="w-nanhong" data-type="drama" data-state="soon" style="--thread:var(--m-lilac)">
         <div class="card card--soon">
           <span class="badge">整理中</span>
@@ -706,18 +716,6 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
           <p class="meta">原著：竹已</p>
           <p class="note">TODO：換成你自己的一句話定位。</p>
           <ul class="tags"><li>原著改編對照</li><li>角色弧線</li></ul>
-          <span class="go">預計上線</span>
-        </div>
-      </li>
-
-      <!-- ⑨ 折月亮 -->
-      <li class="work" id="w-zheyueliang" data-type="drama" data-state="soon" style="--thread:var(--m-mist)">
-        <div class="card card--soon">
-          <span class="badge">整理中</span>
-          <h3>折月亮</h3>
-          <p class="meta">TODO：補原著／編劇資訊</p>
-          <p class="note">TODO：換成你自己的一句話定位。</p>
-          <ul class="tags"><li>意象解讀</li></ul>
           <span class="go">預計上線</span>
         </div>
       </li>
@@ -905,14 +903,14 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
         "numberOfItems": 9,
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "告白", "url": "https://story.knittinghiyori.com/confession/" },
-          { "@type": "ListItem", "position": 2, "name": "點燃我，溫暖你", "url": "https://knittinghiyori.com/lighter-and-princess/" },
-          { "@type": "ListItem", "position": 3, "name": "逐玉", "url": "https://knittinghiyori.com/pursuit-of-jade/" },
-          { "@type": "ListItem", "position": 4, "name": "折腰", "url": "https://knittinghiyori.com/the-prisoner-of-beauty-a-lifelong-bond-of-love-and-loyalty/" },
-          { "@type": "ListItem", "position": 5, "name": "天才女友", "url": "https://knittinghiyori.com/genius-girlfriend-2026-premiere-guide/" },
-          { "@type": "ListItem", "position": 6, "name": "熾夏", "url": "https://knittinghiyori.com/never-ending-summer-ending-be-or-he/" },
-          { "@type": "ListItem", "position": 7, "name": "偷偷藏不住" },
-          { "@type": "ListItem", "position": 8, "name": "難哄" },
-          { "@type": "ListItem", "position": 9, "name": "折月亮" }
+          { "@type": "ListItem", "position": 2, "name": "折月亮", "url": "https://story.knittinghiyori.com/when-i-meet-the-moon/" },
+          { "@type": "ListItem", "position": 3, "name": "點燃我，溫暖你", "url": "https://knittinghiyori.com/lighter-and-princess/" },
+          { "@type": "ListItem", "position": 4, "name": "逐玉", "url": "https://knittinghiyori.com/pursuit-of-jade/" },
+          { "@type": "ListItem", "position": 5, "name": "折腰", "url": "https://knittinghiyori.com/the-prisoner-of-beauty-a-lifelong-bond-of-love-and-loyalty/" },
+          { "@type": "ListItem", "position": 6, "name": "天才女友", "url": "https://knittinghiyori.com/genius-girlfriend-2026-premiere-guide/" },
+          { "@type": "ListItem", "position": 7, "name": "熾夏", "url": "https://knittinghiyori.com/never-ending-summer-ending-be-or-he/" },
+          { "@type": "ListItem", "position": 8, "name": "偷偷藏不住" },
+          { "@type": "ListItem", "position": 9, "name": "難哄" }
         ]
       }
     },

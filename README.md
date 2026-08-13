@@ -8,7 +8,9 @@
 |---|---|
 | `story.knittinghiyori.com/` | 這個 repo（GitHub Pages 使用者頁，命名為 `你的帳號.github.io`） |
 | `story.knittinghiyori.com/confession/` | repo `confession` |
-| `story.knittinghiyori.com/hidden-love/` | repo `hidden-love`（未來） |
+| `story.knittinghiyori.com/when-i-meet-the-moon/` | repo `when-i-meet-the-moon` |
+| `story.knittinghiyori.com/hidden-love/` | repo `hidden-love`（規劃中） |
+| `story.knittinghiyori.com/the-first-frost/` | repo `the-first-frost`（規劃中） |
 
 **注意：`CNAME` 只放在這個 repo，其他作品 repo 千萬不要放**，否則自訂網域會打架。
 
@@ -68,6 +70,39 @@
 ## 待辦
 
 - [ ] 做一張 1200×630 分享圖，命名 `og-cover.jpg` 放根目錄
-- [ ] 《偷偷藏不住》《難哄》《折月亮》三張卡片的一句話定位（目前是 TODO）
-- [ ] 《折月亮》補原著／編劇資訊
-- [ ] 《逐玉》劇照原圖只有 480×270，換一張大一點的比較不會糊
+- [ ] 《折月亮》卡片補原著／編劇資訊（目前寫「互動閱讀頁」佔位）
+- [ ] 《折月亮》的一句話定位再確認一次，看有沒有貼合實際內容
+- [ ] 《偷偷藏不住》《難哄》兩張卡片的一句話定位
+- [ ] 兩部上線時：卡片改 `ready`、拍立得白邊說明換掉、`sitemap.xml` 解除註解、JSON-LD 補 url
+
+---
+
+## 內容漏斗：社群 → 互動頁 → 長文
+
+**連結原則：有互動頁的作品，首頁卡片一律連互動頁；互動頁底部再導回部落格長文。**
+沒有互動頁的作品，卡片才直接連長文。
+
+目前的去向：
+
+| 作品 | 卡片連到 |
+|---|---|
+| 告白 | `/confession/` → 互動頁底部導長文 |
+| 折月亮 | `/when-i-meet-the-moon/` → 互動頁底部導長文 |
+| 點燃我，溫暖你 · 逐玉 · 折腰 · 天才女友 · 熾夏 | 直接連母站長文（尚無互動頁） |
+| 偷偷藏不住 · 難哄 | 未上線 |
+
+日後任何一部做了互動頁，記得把卡片的 `href` 從長文換成互動頁，長文的位置改由互動頁底部承接。
+
+### 出口區塊
+
+`snippet-exit.html` 貼在互動頁 `</body>` 之前。樣式全部收在 `.exit` 底下（變數前綴 `--x-`），不會跟互動頁既有的 CSS 打架。
+
+每個作品要改三個地方：
+
+1. `.x-main` 的 `href` → 該作品的長文網址
+2. `.x-main` 的 `h2` 與 `p` → 該篇長文的標題與說明
+3. `--x-accent` → 換成該作品在首頁用的莫蘭迪色（告白 `#c9a49c`、折月亮 `#9cadb8`）
+
+三個出口的優先序是刻意的：**長文（大卡）→ 電子報 → 作品目錄**。長文才是要吃 SEO 的主體，所以連結文字用實字（「讀完整分析」），不要寫「更多」「點這裡」。
+
+長文那邊也記得回連互動頁，兩邊互指。
