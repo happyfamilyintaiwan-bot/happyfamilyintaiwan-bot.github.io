@@ -14,15 +14,145 @@
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
 <meta name="author" content="編織日和">
 
-<!-- ── 網站圖示（瀏覽器分頁的小圖）────────────────────────
-     這些檔案放在主站 repo 根目錄的 /icons/ 資料夾。
-     各作品互動頁只要照抄這一段，路徑用絕對路徑就會共用同一組。 -->
+<!-- ── 網站圖示：六個頁面貼一模一樣的這段 ──────────────────────
+     圖檔只放一份，在 story.knittinghiyori.com 根目錄的 /icons/
+     開頭的斜線代表「從網域最上層找起」，所以每個子目錄都指到同一組 -->
 <link rel="icon" href="/icons/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/icons/icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32.png">
 <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96.png">
 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#e4c995">
+
+<!-- ===== GA4：編織日和 統一追蹤 v1 ===== -->
+<script>
+  /* 本頁身分：整份追蹤碼中「唯一」需要逐頁修改的兩行 */
+  window.HY_STORY_ID    = 'story-hub';
+  window.HY_STORY_TITLE = '故事主頁｜編織日和・故事';
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQZHTYTRMQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  /* set 的參數會自動附加到「所有」事件，包含 GA4 自動蒐集的 page_view 與外連 click */
+  gtag('set', {
+    story_id: window.HY_STORY_ID,
+    content_group: 'story-hub'
+  });
+  gtag('config', 'G-ZQZHTYTRMQ', {
+    page_title: window.HY_STORY_TITLE,
+    cookie_domain: '.knittinghiyori.com'
+  });
+</script>
+<script>
+/* ── 編織日和・互動頁共用追蹤 v1 ──────────────────────────────
+   四支互動頁貼一模一樣的這段，不要逐頁修改。
+   對外提供：hyEvent / hyStart / hyInteract / hySection / hyComplete / hyCount
+   ───────────────────────────────────────────────────────── */
+(function () {
+  var STORY = window.HY_STORY_ID || 'unknown';
+  var started = false, completed = false, exited = false;
+  var actCount = 0, actSeen = {}, progSeen = {}, secSeen = {}, maxScroll = 0;
+
+  function send(name, params) {
+    if (typeof window.gtag !== 'function') return;
+    params = params || {};
+    params.story_id = STORY;
+    window.gtag('event', name, params);
+  }
+  window.hyEvent = send;
+
+  /* 1. story_start：第一次捲動或第一次互動，只送一次 */
+  function start(entry) {
+    if (started) return;
+    started = true;
+    send('story_start', { entry_point: entry || 'scroll' });
+  }
+  window.hyStart = start;
+
+  /* 2. interaction：所有頁內互動都走這裡 */
+  window.hyInteract = function (type, id, index) {
+    start(String(id));
+    var key = type + '|' + id;
+    if (!actSeen[key]) { actSeen[key] = 1; actCount++; }
+    var p = { interaction_type: type, interaction_id: String(id) };
+    if (index !== undefined && index !== null && index !== '') p.interaction_index = Number(index);
+    send('interaction', p);
+  };
+  window.hyCount = function () { return actCount; };
+
+  /* 3. section_view：章節到達，同一段只送一次 */
+  window.hySection = function (id, index) {
+    if (secSeen[id]) return;
+    secSeen[id] = 1;
+    var p = { section_id: String(id) };
+    if (index !== undefined && index !== null) p.section_index = Number(index);
+    send('section_view', p);
+  };
+
+  /* 4. story_complete：讀到結尾，只送一次 */
+  window.hyComplete = function () {
+    if (completed) return;
+    completed = true;
+    send('story_complete', { interactions_count: actCount, max_scroll: maxScroll });
+  };
+
+  /* 5. story_progress：捲動 25 / 50 / 75 / 100 各一次 */
+  var MARKS = [25, 50, 75, 100], ticking = false, fallbackAt = 0;
+  /* 頁面若因 prefers-reduced-motion 而不跑 IntersectionObserver，用捲動百分比當備援 */
+  window.hyCompleteAtScroll = function (pct) { fallbackAt = Number(pct) || 95; };
+  function measure() {
+    ticking = false;
+    var d = document.documentElement;
+    var max = Math.max(d.scrollHeight, document.body ? document.body.scrollHeight : 0) - window.innerHeight;
+    if (max < 1) return;
+    var pct = Math.min(100, Math.max(0, Math.round(window.scrollY / max * 100)));
+    if (pct > maxScroll) maxScroll = pct;
+    if (pct >= 5) start('scroll');
+    if (fallbackAt && pct >= fallbackAt) window.hyComplete();
+    for (var i = 0; i < MARKS.length; i++) {
+      if (pct >= MARKS[i] && !progSeen[MARKS[i]]) {
+        progSeen[MARKS[i]] = 1;
+        send('story_progress', { percent_scrolled: MARKS[i] });
+      }
+    }
+  }
+  window.addEventListener('scroll', function () {
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(measure);
+  }, { passive: true });
+  window.addEventListener('resize', measure);
+
+  /* 6. cta_click：任何帶 data-cta 的元素，四頁共用同一組值 */
+  document.addEventListener('click', function (e) {
+    var t = e.target;
+    if (!t || !t.closest) return;
+    var a = t.closest('[data-cta]');
+    if (!a) return;
+    var id = a.getAttribute('data-cta') || '';
+    send('cta_click', {
+      cta_id: id,
+      cta_type: id.split('_')[0],
+      link_url: a.href || ''
+    });
+  }, true);
+
+  /* 7. story_exit：離開頁面時的總結，只送一次 */
+  function exit() {
+    if (exited || !started) return;
+    exited = true;
+    send('story_exit', { interactions_count: actCount, max_scroll: maxScroll });
+  }
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') exit();
+  });
+  window.addEventListener('pagehide', exit);
+})();
+</script>
+<!-- ===== GA4 統一追蹤結束 ===== -->
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="編織日和 · 故事">
@@ -667,12 +797,12 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
 
       <!-- ⑤ 點燃我，溫暖你 -->
       <li class="work" id="w-lighter" data-type="drama" data-state="ready" style="--thread:var(--m-clay)">
-        <a class="card" href="https://knittinghiyori.com/lighter-and-princess/">
-          <span class="badge">部落格長文</span>
+        <a class="card" href="https://story.knittinghiyori.com/lighter-and-princess/">
+          <span class="badge">互動頁</span>
           <h3>點燃我，溫暖你</h3>
           <p class="meta">原著：Twentine《打火機與公主裙》</p>
           <p class="note">「公主殿下親啟」——同一個稱呼從嘲諷變成只屬於兩個人的暱稱，這個轉向就是整部戲的情感軸線。</p>
-          <ul class="tags"><li>原著改編對照</li><li>伏筆回收</li><li>常見問題</li></ul>
+          <ul class="tags"><li>語氣調節器</li><li>伏筆連連看</li><li>捲動式互動頁</li></ul>
           <span class="go">閱讀分析</span>
         </a>
       </li>
@@ -837,7 +967,7 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
       <p>不定期寄出，一封信講一部作品：這次從哪裡切入、找到了什麼，還有哪些沒寫進文章裡的想法。隨時可以退訂。</p>
     </div>
     <div class="side">
-      <a class="btn btn--solid" href="https://knittinghiyori.kit.com/2cf3d82ac1" target="_blank" rel="noopener">訂閱電子報</a>
+      <a class="btn btn--solid" data-cta="newsletter" href="https://knittinghiyori.kit.com/2cf3d82ac1" target="_blank" rel="noopener">訂閱電子報</a>
       <p class="fine">FREE ・ 隨時退訂</p>
     </div>
   </div>
@@ -855,10 +985,10 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
       <p>劇集、小說、漫畫與電影的深度分析<br>Traditional Chinese ・ Taiwan</p>
     </div>
     <nav aria-label="站外連結">
-      <a href="https://knittinghiyori.com/">母站 編織日和</a>
+      <a data-cta="mainsite" href="https://knittinghiyori.com/">母站 編織日和</a>
       <a href="#works">作品目錄</a>
       <a href="#method">分析方法</a>
-      <a href="https://knittinghiyori.kit.com/2cf3d82ac1" target="_blank" rel="noopener">訂閱電子報</a>
+      <a data-cta="newsletter" href="https://knittinghiyori.kit.com/2cf3d82ac1" target="_blank" rel="noopener">訂閱電子報</a>
       <!-- TODO: 有聯絡信箱或社群的話補在這裡 -->
     </nav>
   </div>
@@ -911,7 +1041,7 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
           { "@type": "ListItem", "position": 2, "name": "折月亮", "url": "https://story.knittinghiyori.com/when-i-meet-the-moon/" },
           { "@type": "ListItem", "position": 3, "name": "偷偷藏不住", "url": "https://story.knittinghiyori.com/hidden-love/" },
           { "@type": "ListItem", "position": 4, "name": "難哄", "url": "https://story.knittinghiyori.com/the-first-frost/" },
-          { "@type": "ListItem", "position": 5, "name": "點燃我，溫暖你", "url": "https://knittinghiyori.com/lighter-and-princess/" },
+          { "@type": "ListItem", "position": 5, "name": "點燃我，溫暖你", "url": "https://story.knittinghiyori.com/lighter-and-princess/" },
           { "@type": "ListItem", "position": 6, "name": "逐玉", "url": "https://knittinghiyori.com/pursuit-of-jade/" },
           { "@type": "ListItem", "position": 7, "name": "折腰", "url": "https://knittinghiyori.com/the-prisoner-of-beauty-a-lifelong-bond-of-love-and-loyalty/" },
           { "@type": "ListItem", "position": 8, "name": "天才女友", "url": "https://knittinghiyori.com/genius-girlfriend-2026-premiere-guide/" },
@@ -1053,6 +1183,84 @@ footer small{display:block; margin-top:44px; color:var(--ink-3); font-family:var
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
   document.getElementById('yr').textContent = new Date().getFullYear();
+})();
+
+/* ══════════════════════════════════════════════════════════════
+   6. GA4：主頁專屬事件（事件名與參數由 head 的共用追蹤提供）
+   ══════════════════════════════════════════════════════════════ */
+(function () {
+  if (typeof hyEvent !== 'function') return;
+
+  /* ── 作品點擊：主頁最重要的一個指標 ── */
+  function workClick(a, li, pos, source) {
+    hyEvent('work_card_click', {
+      work_id:      (li.id || '').replace(/^w-/, ''),
+      work_type:    li.getAttribute('data-type') || '',
+      work_state:   li.getAttribute('data-state') || '',
+      card_position: pos,
+      click_source: source,
+      link_url:     a.href || ''
+    });
+  }
+
+  var cards = document.querySelectorAll('.work a.card');
+  Array.prototype.forEach.call(cards, function (a, i) {
+    var li = a.closest('.work');
+    if (!li) return;
+    a.addEventListener('click', function () { workClick(a, li, i + 1, 'grid'); });
+  });
+
+  /* 拍立得跑馬燈（第二份是複製品，跳過） */
+  var polas = document.querySelectorAll('.reel .pola:not([aria-hidden="true"])');
+  Array.prototype.forEach.call(polas, function (a, i) {
+    a.addEventListener('click', function () {
+      var li = document.querySelector(a.getAttribute('href'));
+      if (li) workClick(a, li, i + 1, 'polaroid');
+    });
+  });
+
+  /* ── 分類篩選 ── */
+  document.querySelectorAll('.chip[data-filter]').forEach(function (c) {
+    c.addEventListener('click', function () { hyInteract('filter', 'filter_' + c.dataset.filter); });
+  });
+
+  /* ── 常見問題展開 ── */
+  document.querySelectorAll('.faq details').forEach(function (dt, i) {
+    dt.addEventListener('toggle', function () {
+      if (dt.open) hyInteract('reveal', 'faq_' + (i + 1 < 10 ? '0' : '') + (i + 1), i + 1);
+    });
+  });
+
+  /* ── 回到頂端 ── */
+  var top = document.getElementById('top-btn');
+  if (top) top.addEventListener('click', function () { hyInteract('act', 'back_to_top'); });
+
+  /* ── 區塊到達 ＋ 讀完 ── */
+  if ('IntersectionObserver' in window) {
+    var SEC = [['.brief', 'brief'], ['.works', 'works'], ['.method', 'method'],
+               ['.faq', 'faq'], ['.letter', 'newsletter']];
+    var sio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        hySection(e.target.getAttribute('data-sec'), Number(e.target.getAttribute('data-seq')));
+        sio.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -55% 0px', threshold: 0 });
+    SEC.forEach(function (pair, i) {
+      var el = document.querySelector(pair[0]);
+      if (!el) return;
+      el.setAttribute('data-sec', pair[1]);
+      el.setAttribute('data-seq', i + 1);
+      sio.observe(el);
+    });
+    var foot = document.querySelector('footer');
+    if (foot) {
+      var fio = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { hyComplete(); fio.disconnect(); } });
+      }, { threshold: 0.2 });
+      fio.observe(foot);
+    }
+  }
 })();
 </script>
 
