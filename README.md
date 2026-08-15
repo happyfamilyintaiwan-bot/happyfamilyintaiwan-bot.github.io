@@ -9,8 +9,8 @@
 | `story.knittinghiyori.com/` | 這個 repo（GitHub Pages 使用者頁，命名為 `你的帳號.github.io`） |
 | `story.knittinghiyori.com/confession/` | repo `confession` |
 | `story.knittinghiyori.com/when-i-meet-the-moon/` | repo `when-i-meet-the-moon` |
-| `story.knittinghiyori.com/hidden-love/` | repo `hidden-love`（規劃中） |
-| `story.knittinghiyori.com/the-first-frost/` | repo `the-first-frost`（規劃中） |
+| `story.knittinghiyori.com/hidden-love/` | repo `hidden-love` |
+| `story.knittinghiyori.com/the-first-frost/` | repo `the-first-frost` |
 
 **注意：`CNAME` 只放在這個 repo，其他作品 repo 千萬不要放**，否則自訂網域會打架。
 
@@ -69,11 +69,11 @@
 
 ## 待辦
 
-- [ ] 做一張 1200×630 分享圖，命名 `og-cover.jpg` 放根目錄
 - [ ] 《折月亮》卡片補原著／編劇資訊（目前寫「互動閱讀頁」佔位）
-- [ ] 《折月亮》的一句話定位再確認一次，看有沒有貼合實際內容
-- [ ] 《偷偷藏不住》《難哄》兩張卡片的一句話定位
-- [ ] 兩部上線時：卡片改 `ready`、拍立得白邊說明換掉、`sitemap.xml` 解除註解、JSON-LD 補 url
+- [ ] 《偷偷藏不住》《難哄》兩張卡片的一句話定位再確認，看有沒有貼合互動頁實際內容
+- [ ] 四個互動頁的 `<head>` 貼上 `snippet-favicon.html`
+- [ ] 四個互動頁的底部貼上 `snippet-exit.html`
+- [ ] 目前九部作品全部是 `ready`，「只看可閱讀」這個篩選暫時等同「全部」，等有新的整理中作品才會再派上用場
 
 ---
 
@@ -88,8 +88,9 @@
 |---|---|
 | 告白 | `/confession/` → 互動頁底部導長文 |
 | 折月亮 | `/when-i-meet-the-moon/` → 互動頁底部導長文 |
+| 偷偷藏不住 | `/hidden-love/` → 互動頁底部導長文 |
+| 難哄 | `/the-first-frost/` → 互動頁底部導長文 |
 | 點燃我，溫暖你 · 逐玉 · 折腰 · 天才女友 · 熾夏 | 直接連母站長文（尚無互動頁） |
-| 偷偷藏不住 · 難哄 | 未上線 |
 
 日後任何一部做了互動頁，記得把卡片的 `href` 從長文換成互動頁，長文的位置改由互動頁底部承接。
 
@@ -101,8 +102,52 @@
 
 1. `.x-main` 的 `href` → 該作品的長文網址
 2. `.x-main` 的 `h2` 與 `p` → 該篇長文的標題與說明
-3. `--x-accent` → 換成該作品在首頁用的莫蘭迪色（告白 `#c9a49c`、折月亮 `#9cadb8`）
+3. `--x-accent` → 換成該作品在首頁用的莫蘭迪色
+
+| 作品 | `--x-accent` |
+|---|---|
+| 告白 | `#c9a49c` 灰粉 |
+| 折月亮 | `#9cadb8` 霧藍 |
+| 偷偷藏不住 | `#96aea4` 青灰 |
+| 難哄 | `#b0a6b4` 藕紫 |
 
 三個出口的優先序是刻意的：**長文（大卡）→ 電子報 → 作品目錄**。長文才是要吃 SEO 的主體，所以連結文字用實字（「讀完整分析」），不要寫「更多」「點這裡」。
 
 長文那邊也記得回連互動頁，兩邊互指。
+
+
+---
+
+## 網站圖示（分頁上的小圖）
+
+圖示檔全部放在主站 repo 的 `/icons/`，加上根目錄的 `site.webmanifest`。
+
+| 檔案 | 用途 |
+|---|---|
+| `favicon.ico` | 瀏覽器分頁，內含 16／32／48 三種尺寸 |
+| `favicon-32.png`、`favicon-96.png` | 較新的瀏覽器優先讀這兩個 |
+| `apple-touch-icon.png` | iPhone／iPad 加到主畫面時的圖示 |
+| `icon-192.png`、`icon-512.png` | Android 與 PWA |
+| `og-cover.jpg` | 分享到社群時的預覽圖 |
+
+小尺寸的 `favicon.ico` 和 `favicon-32/96` 是**簡化版**——只留奶茶底色加白色拱形，沒有文字。因為分頁上的圖只有 16 像素寬，「編織日和」四個字縮到那個大小會糊成一團色塊，反而不如一個乾淨的形狀好認。大尺寸（apple-touch、192、512）用的是完整 logo。
+
+### 讓互動頁也吃到同一組圖示
+
+`snippet-favicon.html` 貼進每個互動頁的 `<head>`。
+
+路徑一定要用**開頭有斜線的絕對路徑**（`/icons/favicon.ico`）。因為互動頁在子目錄底下，如果寫成 `icons/favicon.ico`，瀏覽器會去找 `/hidden-love/icons/favicon.ico`，那裡沒有檔案，就會退回灰色地球。
+
+其實瀏覽器找不到任何 icon 標籤時，會自己去要 `網域根目錄/favicon.ico`，所以理論上把 ico 放在主站根目錄就能全站通用。但那只涵蓋最舊的那一種格式，iOS 主畫面圖示和 Android 都不吃，所以還是每頁貼一次最保險。
+
+改了圖示之後瀏覽器會頑固地記住舊的，用無痕視窗開一次才看得到新的。
+
+---
+
+## 關於 sitemap
+
+`sitemap.xml` 是手寫的，這是刻意的選擇。
+
+每個互動頁各自是一個 repo，主站不知道其他 repo 有哪些頁面，要自動產生就得寫一支 GitHub Action 去跨 repo 抓，為了目前這五筆網址不值得。等到頁面多到二三十個、或是開始頻繁增減，再考慮自動化。
+
+新增一個互動頁時，照著現有格式複製一組 `<url>` 貼上去就好，記得同時更新首頁那筆的 `lastmod`。改完到 Google Search Console 重新送出一次，不然可能要等好幾天 Google 才會自己回來抓。

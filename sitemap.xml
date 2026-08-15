@@ -1,17 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
   <url>
     <loc>https://story.knittinghiyori.com/</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
   <url>
     <loc>https://story.knittinghiyori.com/confession/</loc>
     <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://story.knittinghiyori.com/when-i-meet-the-moon/</loc>
     <lastmod>2026-08-14</lastmod>
@@ -19,18 +22,18 @@
     <priority>0.8</priority>
   </url>
 
-  <!-- 上線後把下面兩組的註解拿掉，並更新 lastmod
   <url>
     <loc>https://story.knittinghiyori.com/hidden-love/</loc>
-    <lastmod>2026-00-00</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+
   <url>
     <loc>https://story.knittinghiyori.com/the-first-frost/</loc>
-    <lastmod>2026-00-00</lastmod>
+    <lastmod>2026-08-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  -->
+
 </urlset>
