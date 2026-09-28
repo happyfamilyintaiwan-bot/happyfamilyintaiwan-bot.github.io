@@ -29,6 +29,11 @@ for p in pages:
         lack = [e for e in STORY_EVENTS if e not in s]
         if lack:
             miss.append('GA4 故事事件（' + '、'.join(lack) + '）')
+    if '/icons/favicon.ico' not in s:
+        miss.append('品牌 icon（/icons/favicon.ico）')
+    for href in re.findall(r'<link[^>]*rel="(?:icon|apple-touch-icon)"[^>]*href="(/[^"]+)"', s):
+        if not os.path.exists(os.path.join(ROOT, href.lstrip('/'))):
+            miss.append('icon 檔案不存在（' + href + '）')
     m = re.search(r'property="og:image" content="([^"]*)"', s)
     if not m:
         miss.append('分享預覽圖 og:image')
