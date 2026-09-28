@@ -50,6 +50,7 @@
     page_title: '\u30a4\u30f3\u30bf\u30e9\u30af\u30c6\u30a3\u30d6\uff5c\u3042\u306e\u65e5\u306e\u541b\u3068'
   });
 </script>
+<script src="/hy-story.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -460,19 +461,6 @@ a.b3 small{opacity:.66}
       mt = false;
     });
   }
-  /* CTA 點擊送進 GA4 */
-  document.addEventListener('click', function (e) {
-    var t = e.target;
-    if (!t || !t.closest) return;
-    var a = t.closest('[data-cta]');
-    if (!a) return;
-    if (typeof gtag === 'function') {
-      gtag('event', 'cta_click', {
-        cta_id: a.getAttribute('data-cta'),
-        link_url: a.href
-      });
-    }
-  });
 
   window.addEventListener('pointermove', function (e) { moveFog(e.clientX, e.clientY); }, { passive: true });
   window.addEventListener('touchmove', function (e) {

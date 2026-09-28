@@ -564,7 +564,7 @@ a.hl-btn-buy:hover,a.hl-btn-kit:hover,a.hl-btn-back:hover,a.hl-btn-story:hover{t
     <svg class="hl-cta-star" viewBox="0 0 84 96" aria-hidden="true"><use href="#s" fill="#E9C6E4" stroke="#BE8DBE" stroke-width="2" stroke-linejoin="round"/></svg>
     <p class="hl-foot-h">把整罐星星帶回家</p>
     <p class="hl-foot-p">《偷偷藏不住》典藏紀念版<br>上中下套書．首刷贈品版</p>
-    <a class="hl-btn-buy" href="https://s.shopee.tw/9pdRqOIb0b?share_channel_code=6" rel="sponsored nofollow noopener" target="_blank" data-gt="buy_shopee">到蝦皮入手小說</a>
+    <a class="hl-btn-buy" href="https://s.shopee.tw/9pdRqOIb0b?share_channel_code=6" rel="sponsored nofollow noopener" target="_blank" data-cta="buy_shopee">到蝦皮入手小說</a>
     <p class="hl-disclose">本連結為蝦皮聯盟行銷連結，若你透過它完成購買，編織日和會獲得一小筆分潤，你的售價不會因此增加。</p>
   </div>
 
@@ -572,13 +572,13 @@ a.hl-btn-buy:hover,a.hl-btn-kit:hover,a.hl-btn-back:hover,a.hl-btn-story:hover{t
     <svg class="hl-cta-star" viewBox="0 0 84 96" aria-hidden="true"><use href="#s" fill="#F3C9DC" stroke="#C98BAE" stroke-width="2" stroke-linejoin="round"/></svg>
     <p class="hl-foot-h">下一部戲，我先幫你讀完</p>
     <p class="hl-foot-p">每一封信一部作品，寫原著與改編的差異、伏筆與意象。</p>
-    <a class="hl-btn-kit" href="https://knittinghiyori.kit.com/2cf3d82ac1" rel="noopener" target="_blank" data-gt="kit_subscribe">訂閱電子報</a>
+    <a class="hl-btn-kit" href="https://knittinghiyori.kit.com/2cf3d82ac1" rel="noopener" target="_blank" data-cta="kit_subscribe">訂閱電子報</a>
   </div>
 
   <p class="hl-foot-p" style="margin:30px 0 0">完整版有原著與劇版的改編對照、二十五集歌單、廣播劇資訊與爭議段落。</p>
   <div class="hl-links">
-    <a class="hl-btn-back" href="https://knittinghiyori.com/hidden-love/" rel="noopener" data-gt="back_to_article">讀完整文章</a>
-    <a class="hl-btn-story" href="https://story.knittinghiyori.com/" rel="noopener" data-gt="story_home">回到故事主頁</a>
+    <a class="hl-btn-back" href="https://knittinghiyori.com/hidden-love/" rel="noopener" data-cta="back_to_article">讀完整文章</a>
+    <a class="hl-btn-story" href="https://story.knittinghiyori.com/" rel="noopener" data-cta="story_home">回到故事主頁</a>
   </div>
 
   <p class="hl-note-src">本頁引文依流傳的原著段落轉為繁體並調整為台灣用語，正式用字請以高寶書版繁體版為準；劇版台詞以台灣播出字幕為準。若有出入，以官方版本為主。</p>
@@ -722,12 +722,6 @@ a.hl-btn-buy:hover,a.hl-btn-kit:hover,a.hl-btn-back:hover,a.hl-btn-story:hover{t
     })(notes[i]);
   }
 
-  var links = document.querySelectorAll('[data-gt]');
-  for (var k = 0; k < links.length; k++) {
-    links[k].addEventListener('click', function(){
-      if (window.gtag) { gtag('event', 'cta_click', { 'cta_id': this.getAttribute('data-gt') }); }
-    });
-  }
 
   if ('IntersectionObserver' in window) {
     var toneObs = new IntersectionObserver(function(entries){
@@ -789,6 +783,7 @@ gtag('config', 'G-ZQZHTYTRMQ', {
   'page_title': '互動頁｜偷偷藏不住 Hidden Love'
 });
 </script>
+<script src="/hy-story.js"></script>
 
 </body>
 </html>

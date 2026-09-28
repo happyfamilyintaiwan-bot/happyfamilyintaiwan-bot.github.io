@@ -50,6 +50,7 @@
     page_title: '\u4e92\u52d5\u9801\uff5c\u96e3\u54c4 The First Forest'
   });
 </script>
+<script src="/hy-story.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -463,19 +464,6 @@ a.b3 small{opacity:.66}
       mt = false;
     });
   }
-  /* CTA 點擊送進 GA4 */
-  document.addEventListener('click', function (e) {
-    var t = e.target;
-    if (!t || !t.closest) return;
-    var a = t.closest('[data-cta]');
-    if (!a) return;
-    if (typeof gtag === 'function') {
-      gtag('event', 'cta_click', {
-        cta_id: a.getAttribute('data-cta'),
-        link_url: a.href
-      });
-    }
-  });
 
   window.addEventListener('pointermove', function (e) { moveFog(e.clientX, e.clientY); }, { passive: true });
   window.addEventListener('touchmove', function (e) {

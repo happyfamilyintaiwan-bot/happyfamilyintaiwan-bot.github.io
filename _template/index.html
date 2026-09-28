@@ -17,6 +17,16 @@
 <!-- Google AdSense（Auto ads） -->
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2022028565680247" crossorigin="anonymous"></script>
 
+<!-- GA4（故事站標準追蹤，不要刪） -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQZHTYTRMQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){ dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', 'G-ZQZHTYTRMQ', { cookie_domain: '.knittinghiyori.com' });
+</script>
+<script src="/hy-story.js"></script>
+
 <!-- ↓↓↓ 從這裡以下換成新頁自己的內容 ↓↓↓ -->
 <title>作品名｜副標</title>
 <meta name="description" content="一句話介紹">
@@ -39,7 +49,7 @@
 </head>
 <body>
 
-<!-- 內容 -->
+<!-- 內容：段落用 <section data-sec="英文代號">，會自動送 section_view；對外連結加 data-cta="代號" -->
 
 <!-- Google AdSense 手動廣告單元：放在頁尾 footer 前面 -->
 <div class="kh-ad kh-lift" aria-label="贊助內容">

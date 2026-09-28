@@ -1,4 +1,4 @@
-"""上線前檢查：每一頁都要有 Travelpayouts Drive、AdSense、手動廣告格，sitemap 有收錄、沒有 href="#" 空連結。
+"""上線前檢查：每一頁都要有 Travelpayouts Drive、AdSense、手動廣告格、GA4 故事事件、og:image，sitemap 有收錄、沒有 href="#" 空連結。
 用法：在 story-home 資料夾裡執行  python3 _template/check.py
 """
 import glob, os, re, sys
@@ -6,10 +6,14 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CHECKS = {
     'Travelpayouts Drive': 'emrld.ltd/NTc4NjI0.js',
     'AdSense 腳本': 'adsbygoogle.js?client=ca-pub-2022028565680247',
+    'GA4': 'G-ZQZHTYTRMQ',
+    'GA4 跨子網域': '.knittinghiyori.com',
 }
+# 故事頁要有標準事件：用共用的 /hy-story.js，或頁面自己寫齊這些事件
+STORY_EVENTS = ['story_start', 'story_progress', 'section_view', 'interaction',
+                'story_complete', 'cta_click', 'story_exit']
 # 刻意不放進 sitemap 的頁面（寫上原因）
 SITEMAP_SKIP = {
-    'lighter-and-princess/index.html',  # 跟主站 /lighter-and-princess/ 長文同主題，避免搶關鍵字
 }
 bad = 0
 pages = sorted(p for p in glob.glob(os.path.join(ROOT, '**/index.html'), recursive=True)
@@ -21,6 +25,21 @@ for p in pages:
     miss = [k for k, v in CHECKS.items() if v not in s]
     if rel != 'index.html' and '<ins class="adsbygoogle"' not in s:
         miss.append('手動廣告格')
+    if rel != 'index.html' and '/hy-story.js' not in s:
+        lack = [e for e in STORY_EVENTS if e not in s]
+        if lack:
+            miss.append('GA4 故事事件（' + '、'.join(lack) + '）')
+    m = re.search(r'property="og:image" content="([^"]*)"', s)
+    if not m:
+        miss.append('分享預覽圖 og:image')
+    else:
+        img = m.group(1)
+        if not img.startswith('http'):
+            miss.append('og:image 不是完整網址（' + img + '）')
+        elif img.startswith('https://story.knittinghiyori.com/'):
+            local = os.path.join(ROOT, img.split('story.knittinghiyori.com/', 1)[1])
+            if not os.path.exists(local):
+                miss.append('og:image 檔案不存在（' + img + '）')
     url = 'https://story.knittinghiyori.com/' + os.path.dirname(rel) + ('/' if os.path.dirname(rel) else '')
     if rel.count('/') == 1 and rel not in SITEMAP_SKIP and url not in sitemap:
         miss.append('sitemap 沒有這頁')
