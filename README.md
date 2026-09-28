@@ -4,15 +4,30 @@
 
 ## 這個 repo 的角色
 
-| 網址 | 對應 repo |
-|---|---|
-| `story.knittinghiyori.com/` | 這個 repo（GitHub Pages 使用者頁，命名為 `你的帳號.github.io`） |
-| `story.knittinghiyori.com/confession/` | repo `confession` |
-| `story.knittinghiyori.com/when-i-meet-the-moon/` | repo `when-i-meet-the-moon` |
-| `story.knittinghiyori.com/hidden-love/` | repo `hidden-love` |
-| `story.knittinghiyori.com/the-first-frost/` | repo `the-first-frost` |
+2026-09-28 起，所有互動頁都合併在這一個 repo，一個作品一個資料夾，網址跟資料夾名稱一樣：
 
-**注意：`CNAME` 只放在這個 repo，其他作品 repo 千萬不要放**，否則自訂網域會打架。
+| 網址 | 資料夾 |
+|---|---|
+| `story.knittinghiyori.com/` | `index.html`（首頁） |
+| `story.knittinghiyori.com/作品英文網址/` | `作品英文網址/index.html` |
+
+合併前的舊 repo（confession、hidden-love、the-first-frost、the-early-spring、when-i-meet-the-moon、lighter-and-princess）已封存成唯讀備份，不要再改。
+
+## 新增一個互動頁（每次照做）
+
+1. 複製 `_template/index.html` 到新資料夾，例如 `新作品英文網址/index.html`。開頭的 Travelpayouts Drive、AdSense、頁尾廣告格已經放好，**不要刪**。
+2. 分享預覽圖存成同一個資料夾的 `og.jpg`（1200×630）。
+3. 首頁加卡片、拍立得（見下方「新增一部作品」）。
+4. `sitemap.xml` 加一組 `<url>`，首頁那筆的 `lastmod` 也改成今天。
+5. 上線前在這個資料夾裡跑一次檢查，全部 ✅ 才推：
+
+```bash
+python3 _template/check.py
+```
+
+6. GitHub Desktop：Commit → Push，約 1 分鐘上線。
+
+`_template/` 開頭是底線，GitHub Pages 不會把它公開到網站上。
 
 ## 上線步驟
 
